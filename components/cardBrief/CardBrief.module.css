@@ -1,0 +1,51 @@
+.property {
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+    border-radius: 11px;
+    overflow: hidden;
+    transition: 0.4s;
+    width: 40rem;
+    position: relative;
+  }
+
+  .property:hover {
+    transform: translateY(-1.2rem);
+    box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  }
+
+  .content{
+    padding: 1rem;
+  }
+
+  .propertyImg{
+   width: 100%;
+   filter: brightness(0.8);
+  }
+
+  .propertyTitle{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 2.4rem;
+    color:#fff;
+    font-weight: 600;
+    margin-bottom: 3.2rem;
+  }
+
+  .propertyAttributes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .cardAttribute{
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .propertyIcon{
+    font-size: 2.4rem;
+    color: #e67e22;
+  }
