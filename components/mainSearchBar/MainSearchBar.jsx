@@ -1,8 +1,29 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { useForm } from "../../hooks/useForm/useForm";
+import { getFilterData } from "../../lib/helpers/getData";
 import styles from "./MainSearchBar.module.css";
 const MainSearchBar = () => {
   const [checked, setChecked] = useState(false);
-  console.log(checked);
+
+  const { parameter, onInputChange, onResetForm } = useForm({
+    parameter: "",
+    type: "",
+  });
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // const propertyFilterData= getFilterData (parameter,checked)
+    // console.log(propertyFilterData);
+
+    router.push({
+      pathname: "/proyectos",
+      query: { parameter: parameter, type: checked },
+    });
+    onResetForm();
+  };
   const handleCheckboxChange = () => {
     setChecked(!checked);
   };
@@ -21,21 +42,24 @@ const MainSearchBar = () => {
             onChange={handleCheckboxChange}
           />
           <label className={styles.switchButtonLabel}>
-            <span className={styles.switchButtonLabelSpan}>Photo</span>
+            <span className={styles.switchButtonLabelSpan}>Compra</span>
           </label>
         </div>
-        <div className={styles.wrap}>
+        <form onSubmit={handleSubmit} className={styles.wrap}>
           <div className={styles.search}>
             <input
               type="text"
+              value={parameter}
+              onChange={onInputChange}
+              name="parameter"
               className={styles.searchTerm}
-              placeholder="What are you looking for?"
+              placeholder="Buscar por ciudad, código postal, condado o dirección"
             />
             <button type="submit" className={styles.searchButton}>
-            <ion-icon name="search" size="large"></ion-icon>
+              <ion-icon name="search" size="large"></ion-icon>
             </button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

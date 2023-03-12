@@ -6,6 +6,8 @@ import styles from "./NavBar.module.css";
 export const Navbar = () => {
   return (
     <nav className={styles.mainNav}>
+        <Link href={"/"}>
+        
            <Image
             src="/static/PFS.png"
             width={192}
@@ -13,6 +15,7 @@ export const Navbar = () => {
             // className={styles.heroImg}
             alt= "hero image"
           />
+        </Link>
       <ul className={styles.navItems}>
         
         <li>

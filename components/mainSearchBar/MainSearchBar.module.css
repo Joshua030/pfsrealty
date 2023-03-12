@@ -50,7 +50,7 @@ gap: 2rem;
   
   .switchButton:before {
     /* background: rgba(255, 255, 255, 0.56); */
-    content: "Video";
+    content: "Alquiler";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -127,14 +127,18 @@ gap: 2rem;
   }
   
   .searchTerm:focus{
-    color: #FECEE6;
+    color: #444;
+    border: 1px solid #a80552;
   }
   
   .searchButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 5rem;
     height: 5rem;
     border: 1px solid #FECEE6;
-    background: #FC77B8;
+    background: #a80552;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;

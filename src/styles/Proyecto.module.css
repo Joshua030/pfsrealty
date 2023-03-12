@@ -1,0 +1,104 @@
+.cardsContainer{
+    padding: 10rem 3rem;
+  }
+  
+  .cardContainer{
+    display: grid;
+    max-width: 140rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(4,1fr);
+    column-gap: 3.6rem;
+    row-gap: 3.6rem;
+    margin-bottom: 3.6rem;
+    padding: 1rem 3.2rem;
+    margin: 0 auto;
+    height: 182rem;
+  }
+  
+  .sectionTitle{
+    font-size: 3.8rem;
+    font-weight: 500;
+    line-height:1.21em;
+   align-self: center;
+    
+  }
+  
+  .sectionWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 11rem;
+  }
+  
+  
+  .principalContainer{
+  display: flex;
+  flex-direction: column;
+  }
+
+  /* CHECKBOX */
+  .checkboxDropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
+    
+    user-select: none;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkboxDropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkboxDropdown.isActive:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkboxDropdownList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; /* align the dropdown right below the dropdown text */
+    border: inherit;
+    border-top: none;
+    left: -1px; /* align the dropdown to the left */
+    right: -1px; /* align the dropdown to the right */
+    opacity: 0; /* hide the dropdown */
+   
+    transition: opacity 0.4s ease-in-out;
+    height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none; /* avoid mouse click events inside the dropdown */
+}
+.isActive .checkboxDropdownList {
+    opacity: 1; /* display the dropdown */
+    pointer-events: auto; /* make sure that the user still can select checkboxes */
+}
+
+.checkboxDropdownList li label {
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 10px;
+   
+    transition: all 0.2s ease-out;
+}
+
+.checkboxDropdownList li label:hover {
+    background-color: #555;
+    color: white;
+}
