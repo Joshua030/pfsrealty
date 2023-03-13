@@ -1,8 +1,7 @@
-import { Head } from "next/document";
 import { useEffect, useState } from "react";
 import CardComplete from "../../components/CardComplete/CardComplete";
 import Loader from "../../components/loader/Loader";
-import NoData from "../../components/noData.jsx/noData";
+import NoData from "../../components/noData.jsx/NoData";
 import Pagination from "../../components/pagination/Pagination";
 import { getFilterData } from "../../lib/helpers/getData";
 import styles from "../styles/Proyecto.module.css";
