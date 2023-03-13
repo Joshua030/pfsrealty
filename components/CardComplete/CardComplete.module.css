@@ -49,3 +49,46 @@
     font-size: 2.4rem;
     color: #e67e22;
   }
+
+  .bathtub {
+    position: absolute;
+    bottom: 9rem;
+    color: #fff;
+    gap: 1rem;
+    display:flex;
+    align-items: center;
+    right: 3em;
+  }
+
+  .bed {
+    position: absolute;
+    bottom: 9rem;
+    color: #fff;
+    gap: 1rem;
+    display:flex;
+    align-items: center;
+    right: 10em;
+  }
+
+  .price{
+    position: absolute;
+    bottom: 9rem;
+    color: #fff;
+    display:flex;
+    align-items: center;
+    left: 1rem;
+  }
+
+  .bathtub span, .bed span{
+    font-size: 2rem;
+  }
+
+  .price span {
+    font-size: 3rem;
+    font-weight: 600; 
+    transition: 1s all;
+  }
+  .price span:hover {
+   transform: scale(1.1);
+   color: #e91a85;
+  }

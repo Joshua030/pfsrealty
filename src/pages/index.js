@@ -13,7 +13,7 @@ export async function getStaticProps() {
 }
 
 const index = ({ properties }) => {
-  console.log({ properties });
+  // console.log({ properties });
   return (
     <div className={styles.principalContainer}>
       <div className={styles.searchContainer}>

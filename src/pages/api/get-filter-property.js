@@ -3,7 +3,8 @@ const { Op } = require("sequelize");
 
 export const getFilterProperty = async (req, res) => {
  
-  const { parameter, type, page = 1, pageSize = 10, proyectos } = req.body;
+  const { parameter, type, page = 1, pageSize = 10, proyectos,rooms } = req.body;
+  console.log(rooms);
   let property_type = "";
 
   if (type) {
@@ -44,6 +45,15 @@ export const getFilterProperty = async (req, res) => {
           ...whereClause,
           sub_type_text: {
             [Op.in]: proyectos,
+          },
+        };
+      }
+
+      if (rooms && rooms.length > 0) {
+        whereClause = {
+          ...whereClause,
+          property_bedrooms: {
+            [Op.in]: rooms,
           },
         };
       }
