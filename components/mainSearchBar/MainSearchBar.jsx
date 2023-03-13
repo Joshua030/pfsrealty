@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm/useForm";
-import { getFilterData } from "../../lib/helpers/getData";
 import styles from "./MainSearchBar.module.css";
 const MainSearchBar = () => {
   const [checked, setChecked] = useState(false);

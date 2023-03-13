@@ -15,7 +15,7 @@ export default function Document() {
           nomodule
           src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
         ></script>
-           <script src="https://unpkg.com/@phosphor-icons/web"></script>
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
       </body>
     </Html>
   );
