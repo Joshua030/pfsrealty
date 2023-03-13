@@ -1,6 +1,6 @@
 import styles from "./noData.module.css";
 
-export const NoData = () => {
+const NoData = () => {
   return (
     <div>
      <div className={styles.circles}>
