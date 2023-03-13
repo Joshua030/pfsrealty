@@ -4,7 +4,7 @@ export const NoData = () => {
   return (
     <div>
      <div className={styles.circles}>
-      <p>:(<br/>
+      <p>:&#40;<br/>
        <small>Intenta otra Opcion</small>
       </p>
       <span  className={`${styles.circle} ${styles.big}`}></span>
