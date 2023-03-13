@@ -3,7 +3,6 @@ import CardComplete from "../../components/CardComplete/CardComplete";
 import Loader from "../../components/loader/Loader";
 import NoData from "../../components/noData.jsx/NoData";
 import Pagination from "../../components/pagination/Pagination";
-import { getFilterData } from "../../lib/helpers/getData";
 import styles from "../styles/Proyecto.module.css";
 
 const { useRouter } = require("next/router");
@@ -55,26 +54,49 @@ const proyectos = () => {
   };
 
   useEffect(() => {
+   
     const filterData = async () => {
-      const propertyFilterData = await getFilterData(
-        parameter,
-        type,
-        currentPage,
-        pageSize,
-        proyectos,
-        rooms
-      );
-
+     console.log('entre');
+            try {
+              const response = await fetch("/api/get-filter-property", {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  parameter,
+                  type,
+                  page:currentPage,
+                  pageSize,
+                  proyectos,
+                  rooms
+                })
+              });
+              if (!response.ok) {
+                // console.log(response);
+                throw new Error('Network response was not ok');
+              }
+              const data = await response.json();
+              console.log(data);
+              setDataProperties(data.properties);
+              settotalCount(data.totalCount);
+              setloading(false);
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            //   setloading(false);
+              throw error;
+          }
+        
+   
+        }
+        filterData()
       // const propertyFilterData= await getFilterData (parameter,type)
-      setDataProperties(propertyFilterData.properties);
+    //   setDataProperties(propertyFilterData.properties);
       //   setloading(false)
       //   console.log(propertyFilterData);
       //     );
     //   console.log(dataProperties);
-      settotalCount(propertyFilterData.totalCount);
-      setloading(false);
-    };
-    filterData();
+    
   }, [currentPage, proyectos,rooms]);
 
   const handleListClick = (e) => {

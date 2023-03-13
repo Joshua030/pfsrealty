@@ -1,19 +1,38 @@
+import { useEffect, useState } from "react";
 import CardBrief from "../../components/cardBrief/CardBrief";
 import MainSearchBar from "../../components/mainSearchBar/MainSearchBar";
-import { getData } from "../../lib/helpers/getData";
 import styles from "../styles/Home.module.css";
-export async function getStaticProps() {
-  // fsq3dY1XgTfByBT0eV2Mys3L9uhG5ecHu9qfinDHBIEmfjI=
-  const properties = await getData();
+// export async function getStaticProps() {
+//   // fsq3dY1XgTfByBT0eV2Mys3L9uhG5ecHu9qfinDHBIEmfjI=
+//   const properties = await getData();
 
-  // .catch((err) => console.error(err));
-  return {
-    props: { properties }, // will be passed to the page component as props
-  };
-}
+ 
+//   return {
+//     props: { properties }, 
+//   };
+// }
 
-const index = ({ properties }) => {
+const index = () => {
   // console.log({ properties });
+const [properties, setProperties] = useState([])
+  useEffect(() => {
+
+    const getData = async() => {
+      try {
+        const response = await fetch('/api/get-property?limit=12');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setProperties(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+      }
+    }
+getData()
+  }, [])
+  
   return (
     <div className={styles.principalContainer}>
       <div className={styles.searchContainer}>

@@ -7,7 +7,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     // Define your environment variables here
     API_URL: process.env.API_URL || 'http://localhost:3000'
-  }
+  },
+  basePath: '',
+  assetPrefix: '',
 }
 
 module.exports = nextConfig
