@@ -28,7 +28,6 @@ const proyectos = () => {
 
   const parameter = router.query.parameter?.split("#")[0].trim();
   const type = router.query.type;
-
   const pageSize = 12;
 
   const handleCheckboxClick = (e) => {
@@ -54,50 +53,44 @@ const proyectos = () => {
   };
 
   useEffect(() => {
-   
     const filterData = async () => {
-     console.log('entre');
-            try {
-              const response = await fetch("api/get-filter-property", {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  parameter,
-                  type,
-                  page:currentPage,
-                  pageSize,
-                  proyectos,
-                  rooms
-                })
-              });
-              if (!response.ok) {
-                // console.log(response);
-                throw new Error('Network response was not ok');
-              }
-              const data = await response.json();
-              console.log(data);
-              setDataProperties(data.properties);
-              settotalCount(data.totalCount);
-              setloading(false);
-            } catch (error) {
-              console.error('Error fetching data:', error);
-            //   setloading(false);
-              throw error;
+        console.log(parameter);
+      try {
+        const response = await fetch(
+            "https://pfs-backend.onrender.com/filterproperty",
+        //   "http://localhost:3000/filterproperty",
+          {
+            method: "POST",
+          headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              parameter,
+              type,
+              page: currentPage,
+              pageSize,
+              proyectos,
+              rooms,
+            }),
           }
-        
-   
+        );
+        if (!response.ok) {
+          // console.log(response);
+          throw new Error("Network response was not ok");
         }
-        filterData()
-      // const propertyFilterData= await getFilterData (parameter,type)
-    //   setDataProperties(propertyFilterData.properties);
-      //   setloading(false)
-      //   console.log(propertyFilterData);
-      //     );
-    //   console.log(dataProperties);
-    
-  }, [currentPage, proyectos,rooms]);
+        const data = await response.json();
+        console.log(data);
+        setDataProperties(data.properties);
+        settotalCount(data.totalCount);
+        setloading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        //   setloading(false);
+        throw error;
+      }
+    };
+    filterData();
+  }, [currentPage, proyectos, rooms]);
 
   const handleListClick = (e) => {
     e.stopPropagation();
