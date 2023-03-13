@@ -19,7 +19,7 @@ const [properties, setProperties] = useState([])
 
     const getData = async() => {
       try {
-        const response = await fetch('/api/get-property?limit=12');
+        const response = await fetch('https://pfsrealty-production.up.railway.app/api/get-property?limit=12');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

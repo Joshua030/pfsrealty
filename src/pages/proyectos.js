@@ -58,7 +58,7 @@ const proyectos = () => {
     const filterData = async () => {
      console.log('entre');
             try {
-              const response = await fetch("/api/get-filter-property", {
+              const response = await fetch("https://pfsrealty-production.up.railway.appgi/api/get-filter-property", {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
