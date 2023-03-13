@@ -1,4 +1,4 @@
-import styles from "./noData.module.css";
+import styles from "./NoData.module.css";
 
 const NoData = () => {
   return (
