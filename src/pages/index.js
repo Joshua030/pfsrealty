@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CardBrief from "../../components/cardBrief/CardBrief";
+import Loader from "../../components/loader/Loader";
 import MainSearchBar from "../../components/mainSearchBar/MainSearchBar";
 import styles from "../styles/Home.module.css";
 
@@ -7,19 +8,22 @@ import styles from "../styles/Home.module.css";
 const index = () => {
  
 const [properties, setProperties] = useState([])
-const [loading, setloading] = useState(true);
+const [loading, setloading] = useState(false);
   useEffect(() => {
 
     const getData = async() => {
       try {
+        setloading(true)
         const response = await fetch('https://pfs-backend.onrender.com/property?limit=12');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setProperties(data)
+        setloading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
+        setloading(false)
         throw error;
       }
     }
