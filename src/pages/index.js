@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 const index = () => {
  
 const [properties, setProperties] = useState([])
+const [loading, setloading] = useState(true);
   useEffect(() => {
 
     const getData = async() => {
@@ -26,8 +27,11 @@ getData()
   }, [])
   
   return (
-    <div className={styles.principalContainer}>
-      <div className={styles.searchContainer}>
+  <>
+  {loading ? (
+      <Loader />
+      ) :(<div className={styles.principalContainer}>
+     <div className={styles.searchContainer}>
         <MainSearchBar/>
       </div>
       <div className={styles.cardsContainer}>
@@ -56,8 +60,10 @@ getData()
         )}
       </div>
       
-    </div>
+    </div>)}
+  </>
   );
+    
 };
 
 export default index;
