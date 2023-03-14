@@ -2,24 +2,16 @@ import { useEffect, useState } from "react";
 import CardBrief from "../../components/cardBrief/CardBrief";
 import MainSearchBar from "../../components/mainSearchBar/MainSearchBar";
 import styles from "../styles/Home.module.css";
-// export async function getStaticProps() {
-//   // fsq3dY1XgTfByBT0eV2Mys3L9uhG5ecHu9qfinDHBIEmfjI=
-//   const properties = await getData();
 
- 
-//   return {
-//     props: { properties }, 
-//   };
-// }
 
 const index = () => {
-  // console.log({ properties });
+ 
 const [properties, setProperties] = useState([])
   useEffect(() => {
 
     const getData = async() => {
       try {
-        const response = await fetch('/api/get-property?limit=12');
+        const response = await fetch('https://pfs-backend.onrender.com/property?limit=12');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
